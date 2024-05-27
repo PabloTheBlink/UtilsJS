@@ -9,17 +9,20 @@ Pequeña libreria de utilidades
 ### Uso
 
 ```javascript
-function animateNumber(currentValue, newValue, callback, duration = 1000) {
-    const frameDuration = 1000 / 60;
-    const totalFrames = Math.round(duration / frameDuration);
-    const increment = (newValue - currentValue) / totalFrames;
-    let currentFrame = 0;
+import { Component } from "https://cdn.devetty.es/ScopeJS/js";
+import { animateNumber } from "https://cdn.devetty.es/UtilsJS/js";
 
-    const interval = setInterval(() => {
-        currentFrame++;
-        const currentValueToDisplay = Math.round(currentValue + increment * currentFrame);
-        callback(currentFrame === totalFrames ? newValue : currentValueToDisplay);
-        if (currentFrame === totalFrames) clearInterval(interval);
-    }, frameDuration);
-}
+Component({
+    controller: function() {
+        this.counter = 1;
+        setTimeout(() => animateNumber(180, 200, number => {
+            this.counter = number;
+            this.apply();
+        }))
+    },
+    render: function() {
+        return `<h1>Contador: ${this.counter}</h1>`
+    }
+}).render(document.body);
+```
 
