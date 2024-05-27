@@ -1,15 +1,4 @@
-# UtilsJS
-
-Pequeña libreria de utilidades
-
-## animateNumber
-
-`animateNumber` es una función que anima un número desde un valor inicial (`currentValue`) hasta un valor final (`newValue`) durante un período de tiempo especificado. La función ejecuta un callback con el valor animado en cada frame de la animación.
-
-### Uso
-
-```javascript
-function animateNumber(currentValue, newValue, callback, duration = 1000) {
+export function animateNumber(currentValue, newValue, callback, duration = 1000) {
     const frameDuration = 1000 / 60;
     const totalFrames = Math.round(duration / frameDuration);
     const increment = (newValue - currentValue) / totalFrames;
@@ -22,4 +11,3 @@ function animateNumber(currentValue, newValue, callback, duration = 1000) {
         if (currentFrame === totalFrames) clearInterval(interval);
     }, frameDuration);
 }
-
